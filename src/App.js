@@ -1,15 +1,20 @@
+import React from 'react'
+import NavBar from './components/NavBar.js'
+import Header from './components/Header.js'
+import Main from './components/Main.js'
+import ItemListContainer from './components/ItemListContainer.js'
 
-import './App.css';
 
-function App(){
-  return (<>
-  <header>
-    <h1>Menu de Comida:</h1>
-  </header>
-  <p><li>Hamburguesas</li></p>
-  <p><li>Milanesas</li></p>
-  <p><li>Ensaladas</li></p>
-  </>)
+const App = () => {
+  return (
+    <>
+      <Header/>
+      <NavBar/>
+      <Main/>
+      <ItemListContainer greeting="Gracias a la tecnología que hemos incorporado brindamos un servicio de calidad, confiable y simple"/>
+    </>
+  )
 }
+
 
 export default App
