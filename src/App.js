@@ -1,20 +1,27 @@
-import React from 'react'
-import NavBar from './components/NavBar.js'
-import Header from './components/Header.js'
-import Main from './components/Main.js'
+
 import ItemListContainer from './components/ItemListContainer.js'
+import React from "react"
+import NavBar from './components/NavBar'
+import Header from './components/Header'
+import Main from './components/Main'
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'materialize-css/dist/css/materialize.css'
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
 
 
-const App = () => {
-  return (
-    <>
-      <Header/>
-      <NavBar/>
-      <Main/>
-      <ItemListContainer greeting="Gracias a la tecnología que hemos incorporado brindamos un servicio de calidad, confiable y simple"/>
-    </>
-  )
+
+export default function App() {
+return (
+    <div>
+        <NavBar/>
+        <img src="../img/logo.png"></img>
+        <Header/>
+        <ItemListContainer/>
+        <Main/>
+    </div>
+)
 }
 
 
-export default App
+

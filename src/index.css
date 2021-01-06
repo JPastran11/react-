@@ -12,10 +12,16 @@ code {
     monospace;
 }
 
-header {
-  background-color: blue;
+
+img {
+width: 100%;
 }
 
-p {
-  background-color: lightblue;
+blockquote {
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
 }

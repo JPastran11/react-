@@ -1,16 +1,20 @@
 import React from 'react'
-import CartWidget from './CartWidget'
+
 
 
 
 const NavBar = () => {
     return (
         <nav>
-            <p><a href="#">Home</a></p>
-            <p><a href="#">Contador</a></p>
-            <p><a href="#">Contacto</a></p>
-            <CartWidget/>
-        </nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">SASCHA FITNESS</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop Now</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
     )
 }
 
