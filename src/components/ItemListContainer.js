@@ -3,6 +3,7 @@
 import React , { useEffect, useState } from 'react'
 import ItemList from './ItemList.js'
 import ProductosContainer from './ProductosContainer.js'
+import ItemDetailContainer from './ItemDetailContainer'
 
 
 const productos = [

@@ -1,4 +1,6 @@
 import React from 'react'
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/css/materialize.css'
 
 
 
@@ -6,9 +8,9 @@ import React from 'react'
 const NavBar = () => {
     return (
         <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">SASCHA FITNESS</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <div class="card-panel teal lighten-2">
+      
+      <ul id="nav-mobile" class="navBar">
         <li><a href="#">Home</a></li>
         <li><a href="#">Shop Now</a></li>
         <li><a href="#">Contact</a></li>

@@ -6,6 +6,11 @@ import Header from './components/Header'
 import Main from './components/Main'
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'materialize-css/dist/css/materialize.css'
+import ItemDetail from './components/ItemDetail'
+import Loader from './components/Loader'
+import Item from './components/Item'
+import ItemDetailContainer from './components/ItemDetailContainer'
+
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
 
@@ -19,6 +24,7 @@ return (
         <Header/>
         <ItemListContainer/>
         <Main/>
+       
     </div>
 )
 }
