@@ -10,7 +10,7 @@ import ItemDetail from './components/ItemDetail'
 import Loader from './components/Loader'
 import Item from './components/Item'
 import ItemDetailContainer from './components/ItemDetailContainer'
-
+import {BrowserRouter} from 'react-router-dom'
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
 
@@ -18,14 +18,14 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 
 export default function App() {
 return (
-    <div>
+    <BrowserRouter>
         <NavBar/>
         <img src="../img/logo.png"></img>
         <Header/>
         <ItemListContainer/>
         <Main/>
        
-    </div>
+    </BrowserRouter>
 )
 }
 
