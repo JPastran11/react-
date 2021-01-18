@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 
-const ProductosContainer = ({stock, initial}) => {
+
+
+const ProductosContainer = ({stock, initial, onAdd}) => {
     const [cantidad,setCantidad] = useState(initial)
+    
+    
     const aumentarContador = () => {
         if(cantidad < stock)
         setCantidad(cantidad + 1)
@@ -14,7 +18,8 @@ const ProductosContainer = ({stock, initial}) => {
 
      
 
-    const onAdd = () => {
+    const agregarCarrito = () => {
+        onAdd(cantidad)
 
     }
 
@@ -35,7 +40,7 @@ const ProductosContainer = ({stock, initial}) => {
                         </button>
                     </div>
                 </div>
-                <button onClick={onAdd}>Agregar a mi carrito</button>
+                <button onClick={agregarCarrito}>Agregar a mi carrito</button>
             </div>
     
     )

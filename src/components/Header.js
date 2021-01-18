@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from './NavBar'
 import 'materialize-css/dist/css/materialize.min.css'
 
 

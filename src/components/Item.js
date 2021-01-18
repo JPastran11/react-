@@ -1,6 +1,6 @@
 import React from 'react'
-
-const Item = ({title,price,pictureUrl,stock,description}) => {
+import {Link} from 'react-router-dom'
+const Item = ({title,price,pictureUrl,stock,id}) => {
     return (
         <div className="col s6 m4 l3">
             <div className="card">
@@ -11,7 +11,10 @@ const Item = ({title,price,pictureUrl,stock,description}) => {
                     <span className="card-title truncate">{title}</span>
                     <p>${price}</p>
                     <p>Stock: {stock}</p>
-                    <p>{description}</p>
+                    
+                </div>
+                <div className="card-action">
+                    <Link to={`/item/${id}`}>ver detalle</Link>
                 </div>
             </div>
         </div>

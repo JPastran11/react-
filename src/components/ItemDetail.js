@@ -1,14 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react';
+import ProductosContainer from './ProductosContainer'
+import {Link} from 'react-router-dom'
+import 'materialize-css/dist/css/materialize.css'
+import {Card,Col,Button,Container,Row} from 'react-bootstrap'
 
-const ItemDetail = ({item}) => {
+const ItemDetail = ({title,price,pictureUrl,stock}) => {
+        const [cantidadDetail, setCantidadDetail]= useState (null);
+        
 
-    return (
-        <div>
-            <h3>{item.title} - ${item.price}</h3>
-            <img src={item.pictures[0]} alt="carousel"/>
-            <p>{item.description}</p>
+        const onAdd = cant => {
+            console.log("funcion onAdd"+ cant)
+            setCantidadDetail(cant)
             
-        </div>
+        }
+    return (
+        <Container>
+            <Row>
+        <Card.Img variant="top" src={pictureUrl} />
+        <Card.Body>
+            <Card.Tittle>{title}</Card.Tittle>
+            <Card.Text>
+                Precio: {price}
+                Stock: {stock}
+            </Card.Text>
+        </Card.Body>
+        <br></br>
+        <Col text="center">
+            <ProductosContainer stock={10} initial={1} onAdd={onAdd}  />
+            <br></br>
+            {cantidadDetail &&
+            <Link to="/Cart">
+            <Button type="submit">Comprar</Button>
+            </Link> 
+            }
+        </Col>
+        </Row>
+        </Container>
+        
     )
 }
 
