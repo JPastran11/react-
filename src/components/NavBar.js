@@ -1,26 +1,39 @@
-import React from 'react'
-import 'materialize-css/dist/css/materialize.min.css'
-import 'materialize-css/dist/css/materialize.css'
-import {Link} from 'react-router-dom'
+import React from 'react';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
+const categories = [{
+    categoryId: "wheyprotein",
+    name: "WHEYPROTEIN"
+},
+{
+    categoryId: "glutamine",
+    name: "GLUTAMINE"
+}]
 
-
-
-const NavBar = () => {
+function Navbar() {
     return (
-        <nav>
-    <div className="card-panel teal lighten-2">
-      
-      <ul id="nav-mobile" className="navBar">
-        <li><Link to="/Home">Home</Link></li>
-        <li><Link to="/ShopNow">Shop Now</Link></li>
-        <li><Link to="/Contact">Contact</Link></li>
-      </ul>
-      <CartWidget/>
-    </div>
-  </nav>
+        <div className="navbar">
+            <div className="navbar__logo">
+                <Link to={"/"}><img src="https://static.ageofempires.com/aoe/wp-content/uploads/2020/01/aoe_logo_stacked-1.png" alt=""/></Link>
+            </div>
+            <div className="navbar__links">
+                {/* Hago el mapeo. Cada categoría me va a llevar a su categoryId */}
+                { categories.map( category => <Link to={`/category/${category.categoryId}`}>
+                    <p>{category.name}</p>
+                    </Link>)}
+                    <li><Link to="/Home">Home</Link></li>
+                    <li><Link to="/ShopNow">Shop Now</Link></li>
+                    <li><Link to="/Contact">Contact</Link></li>
+                { /* Acá uso el ícono del carrito que importé */}
+                <div className="navbar__cart">
+                  <Link to={"/cart"}><CartWidget /></Link>
+                </div>
+            </div>
+        </div>
     )
 }
 
-export default NavBar
+export default Navbar
+
+

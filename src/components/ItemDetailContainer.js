@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
 import Loader from './Loader'
 
-const details =  [
+const products =  [
     {
         category : "1",
         id : "GUIDEDIGITAL1",
@@ -71,36 +71,39 @@ const details =  [
     }
 ]
 
-const ItemDetailContainer = () => {
+function ItemDetailContainer () {
 
     const [item,setItem] = useState()
     const {id} = useParams()
 
     useEffect(()=>{
 
-        let pedido = new Promise((res,rej)=>{
-            setTimeout(()=>{
-                res(details)
+       const pedido = new Promise((res,rej)=>{
+            setTimeout(function(){
+                const i = products.find(product => product.id === parseInt(id))
+                res(i)
             },2000)
         })
 
-        pedido
-        .then(res=>{
-            if(id){
-                setItem(res.filter(item=>item.id===id)[0])
-            }
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+        pedido.then(result => setItem(result)) 
+        pedido.catch(err => console.log("Algo salio mal")) 
 
     },[id])
 
     return (
         <div>
-            {item
-            ? <ItemDetail item={item}/> 
-            : <Loader/>}
+             { item ?
+            <ItemDetail
+             item={item}
+             id={item.id}
+             name={item.name}     
+             price={item.price}
+             image={item.image}
+             description={item.description}
+             stock={item.stock}
+             initial={item.initial}
+             />
+             : <Loader/>}
         </div>
     )
 }

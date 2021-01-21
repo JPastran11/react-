@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { CartContext } from './CartContext';
 
-const CartWidget = () => {
+
+function CartWidget() {
+    const { quantity } = useContext(CartContext)
+
     return (
-        <a href="/Cart" className="black-text right" id="cart-widget">
-            <i className="material-icons">shopping_cart</i>   
-        </a>
+        <div
+        >
+            { quantity > 0 && 
+            <>
+            
+            <h4>{quantity}</h4>
+            </>}
+        </div>
     )
 }
 

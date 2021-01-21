@@ -1,18 +1,17 @@
-import React from 'react'
-import Item from './Item'
-import Loader from './Loader'
 
-const ItemList = ({items}) => {
+import React from 'react';
+import Item from './Item';
+
+
+function ItemList( { products }) {
 
     return (
-        <div className="row">
-            {items.length > 0
-            ? items.map(item=>{
-                return (
-                    <Item key={item.id} id={item.id} title={item.title} price={item.price} pictureUrl={item.pictureUrl} stock={item.stock}/>
-                )
-            })
-            : <Loader/>}
+        <div className="itemList">
+           
+
+            { products.map( product => <Item key={product.id} id={product.id} 
+            name={product.name} image={product.image} />)
+            }
         </div>
     )
 }

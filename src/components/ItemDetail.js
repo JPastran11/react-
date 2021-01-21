@@ -1,21 +1,27 @@
 import React, {useState} from 'react';
 import ProductosContainer from './ProductosContainer'
-import {Link} from 'react-router-dom'
 import 'materialize-css/dist/css/materialize.css'
-import {Card,Col,Button,Container,Row} from 'react-bootstrap'
+import {Card,Container,Row} from 'react-bootstrap'
 
-const ItemDetail = ({title,price,pictureUrl,stock}) => {
-        const [cantidadDetail, setCantidadDetail]= useState (null);
+function ItemDetail  ({title,price,pictureUrl,stock,initial,id,item})  {
+        const [cantidadDetail, setCantidadDetail]= useState (initial);
         
 
-        const onAdd = cant => {
-            console.log("funcion onAdd"+ cant)
-            setCantidadDetail(cant)
-            
+        function add(){
+            if (cantidadDetail < stock ){
+                setCantidadDetail(cantidadDetail+1)
+            }
         }
+        function substract() {
+            if (cantidadDetail > initial ){
+                setCantidadDetail(cantidadDetail-1)
+            }
+        }
+    
     return (
         <Container>
             <Row>
+                <Card>
         <Card.Img variant="top" src={pictureUrl} />
         <Card.Body>
             <Card.Tittle>{title}</Card.Tittle>
@@ -24,17 +30,15 @@ const ItemDetail = ({title,price,pictureUrl,stock}) => {
                 Stock: {stock}
             </Card.Text>
         </Card.Body>
+        </Card>
+
         <br></br>
-        <Col text="center">
-            <ProductosContainer stock={10} initial={1} onAdd={onAdd}  />
-            <br></br>
-            {cantidadDetail &&
-            <Link to="/Cart">
-            <Button type="submit">Comprar</Button>
-            </Link> 
-            }
-        </Col>
+    
         </Row>
+        <div>
+            <ProductosContainer initial={initial} stock={stock} add={add} substract={substract}
+            item={item} cantidadDetail={cantidadDetail}  id={id}/>
+          </div>
         </Container>
         
     )
