@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
-function Item({ id, name, pictureUrl }) {
+function Item({ id, name, image }) {
     const classes = useStyles();
 
   
@@ -29,7 +29,7 @@ function Item({ id, name, pictureUrl }) {
                         component="img"
                         height="300"
                         className={classes.media}
-                        pictureUrl={pictureUrl}
+                        image={image}
                         title={name}
                    />
                <CardContent>

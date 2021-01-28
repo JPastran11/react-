@@ -6,9 +6,7 @@ import Item from './Item';
 function ItemList( { products }) {
 
     return (
-        <div className="itemList">
-           
-
+        <div>
             { products.map( product => <Item key={product.id} id={product.id} 
             name={product.name} image={product.image} />)
             }

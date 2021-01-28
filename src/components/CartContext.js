@@ -11,8 +11,8 @@ function CartProvider( { children }) {
     useEffect(() => {
         var t = 0
         
-        const totals = cart.map( p => p.price * p.amount)
-        totals.map( p => t = t + p)
+        const total = cart.map( p => p.price * p.amount)
+        total.map( p => t = t + p)
         setTotal(t)
         const cartQuantity = cart.length
         setQuantity(cartQuantity)
@@ -29,13 +29,13 @@ function CartProvider( { children }) {
         }
     }
 
-    function addToCart(product, counter, id) {
+    function addToCart(product, cantidadDetail, id) {
          
       
         if (isInCart(id)){
             
             const oldProduct = cart.find(p => p.id === id)
-            const newQuantity = oldProduct.amount + counter           
+            const newQuantity = oldProduct.amount + cantidadDetail           
             const newProduct = { id: oldProduct.id, name: oldProduct.name, image: oldProduct.image, price: oldProduct.price, amount: newQuantity}
             const cartWithoutOld = cart.filter(product => product.id =! id)
             const cartWithNew = [...cartWithoutOld, newProduct]
@@ -43,7 +43,7 @@ function CartProvider( { children }) {
             setCart(cartWithNew)            
         } else {
             
-            const newItem = { id: product.id, name: product.name, image: product.image, price: product.price, amount: counter }
+            const newItem = { id: product.id, name: product.name, image: product.image, price: product.price, amount: cantidadDetail }
             setCart([...cart, newItem]) 
         }
     }

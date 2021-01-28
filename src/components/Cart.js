@@ -24,7 +24,7 @@ function Cart() {
                 </Button>
             </Link>
             </>)}
-            <div className="cartItems">
+            <div>
                 { cart.length > 0 && cart.map( product => <CartItem key={product.id} 
                 id={product.id} name={product.name} image={product.image} price={product.price} 
                 amount={product.amount} />)}
@@ -34,11 +34,11 @@ function Cart() {
             { cart.length > 0 &&
             <>
             <h2>${total}</h2>
-            <div className="cartItems__buttons">
-                <Button onClick={clearCart} variant="contained" color="primary">
+            <div>
+                <Button onClick={clearCart} variant="contained">
                     Borrar Todo
                 </Button>
-                <Button onClick={() => {console.log(cart)}} variant="contained" color="primary">
+                <Button onClick={() => {console.log(cart)}} variant="contained">
                     A pagar! 
                 </Button>
             </div>

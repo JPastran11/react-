@@ -1,21 +1,21 @@
-import React, {UseContext, UseState} from 'react';
-import listContex from './listContext';
+import React, {UseContext, useState} from 'react';
+import ListContex from './ListContext';
 
 
-export const listContexProvider = () => UseContext(listContex);
+export const listContexProvider = () => UseContext(ListContex);
 
-export const listState = props => {
+export const ListState = props => {
     console.log(props.children.props);
-    const [list, setList] = UseState([]);
+    const [list, setList] = useState([]);
 
     const addList = itemNew => {
         const l = [...list, itemNew];
         setList(l);
     };
      return (
-         <listContex.Provider value={{list, addList}}>
+         <listContexProvider value={{list, addList}}>
          (props.children)
-         </listContex.Provider>
+         </listContexProvider>
           
          
      );

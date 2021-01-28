@@ -3,7 +3,8 @@ import React , { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
 import Loader from './Loader'
-
+import {firestore} from './firebase'
+/*
 const products =  [
     {
         category : "1",
@@ -70,12 +71,12 @@ const products =  [
         stock : 7
     }
 ]
-
+*/
 function ItemDetailContainer () {
 
-    const [item,setItem] = useState()
+    const [fireItem,setFireItem] = useState()
     const {id} = useParams()
-
+/*
     useEffect(()=>{
 
        const pedido = new Promise((res,rej)=>{
@@ -89,23 +90,37 @@ function ItemDetailContainer () {
         pedido.catch(err => console.log("Algo salio mal")) 
 
     },[id])
+*/
+useEffect(() => {
+    const db = firestore
+    const collection = db.collection('products') 
+    const item = collection.doc(id)
 
-    return (
-        <div>
-             { item ?
-            <ItemDetail
-             item={item}
-             id={item.id}
-             name={item.name}     
-             price={item.price}
-             image={item.image}
-             description={item.description}
-             stock={item.stock}
-             initial={item.initial}
-             />
-             : <Loader/>}
-        </div>
-    )
+    item.get()
+     .then( (i) => {
+       setFireItem({ id: i.id, ...i.data()})
+     })
+
+ },  [id]);
+
+ return (
+    <div className="itemDetailContainer">
+       
+        { fireItem ?
+        <ItemDetail
+         item={fireItem}
+         id={fireItem.id}
+         name={fireItem.name}     
+         price={fireItem.price}
+         image={fireItem.image}
+         description={fireItem.description}
+         stock={fireItem.stock}
+         initial={fireItem.initial}
+         />
+         :
+         <h2><Loader/></h2>}
+    </div>
+)
 }
 
 export default ItemDetailContainer

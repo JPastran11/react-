@@ -1,46 +1,41 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom'
+import { CartContext } from './CartContext';
 
-const ProductosContainer = ({stock, initial, onAdd}) => {
-    const [cantidad,setCantidad] = useState(initial)
+
+function ProductosContainer ({ item, id, add, substract, cantidadDetail }) {
+    const [ open, setOpen ] = useState(false)
+
+    const { addToCart } = useContext(CartContext)
     
-    
-    const aumentarContador = () => {
-        if(cantidad < stock)
-        setCantidad(cantidad + 1)
+
+    function addAndOpen(item, cantidadDetail, id){
+        addToCart(item, cantidadDetail, id);
+        setOpen(true)
     }
-
-    const disminuirContador = () => {
-        if(cantidad > 0)
-        setCantidad(cantidad - 1)
-    }
-
-     
-
-    const agregarCarrito = () => {
-        onAdd(this.onAdd)
-
-    }
-
     return (
-        
+        <div>
             <div>
-                <p>Stock disponible : {stock}</p>
-                <div>
-                    <div>
-                        <button onClick={aumentarContador} className={` ${cantidad === stock ? "disabled" : null}`}>
-                            <i> + </i>
-                        </button>
-                    </div>
-                    <div>{cantidad}</div>
-                    <div>
-                        <button onClick={disminuirContador} className={` ${cantidad === 0 ? "disabled" : null}`}>
-                            <i> - </i>
-                        </button>
-                    </div>
-                </div>
-                <button onClick={this.onAdd}>Agregar a mi carrito</button>
+                <Button variant="contained" onClick={substract}>-</Button>
+                    <h3>{cantidadDetail}</h3>
+                <Button variant="contained" onClick={add}>+</Button>
             </div>
-    
+            
+            { !open ? (<div>
+                <Button variant="contained" color="primary" onClick={ () => addAndOpen(item, cantidadDetail, id)}>
+                  <h3>Agregar al <ShoppingCartIcon /> </h3>
+                </Button>
+            </div>) : 
+            (<div>
+                <Link to="/cart">
+                    <Button variant="contained" color="primary" >
+                        <h3>Terminar la compra</h3>
+                    </Button>
+                </Link>
+            </div>) }
+        </div>
     )
 }
 
